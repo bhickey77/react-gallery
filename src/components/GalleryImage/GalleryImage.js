@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import GalleryImage from '../GalleryImage/GalleryImage';
-import Button from '@material-ui/core/Button';
-import './GalleryItem.css';
+import './GalleryImage.css';
 
-class GalleryItem extends Component {
+class Image extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -29,13 +27,15 @@ class GalleryItem extends Component {
   render() {
     return (
       <div className="square" onClick={this.toggleDescription}>
-        <GalleryImage item={this.props.item}/>
-        <Button variant="contained" color="primary">
-          Love this!
-        </Button>
+        <div className="description">
+          {this.state.showingDescription && <p>{this.props.item.description}</p>}
+        </div>
+        <div className={this.state.imageClass}>
+          <img src={this.props.item.path} alt="" />
+        </div>
       </div>
     );
   }
 }
 
-export default GalleryItem;
+export default Image;
