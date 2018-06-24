@@ -10,23 +10,23 @@ class GalleryItem extends Component {
     }
   }
   
-  showDescription = () => {
-    this.setState({
-      showingDescription: true,
-      imageClass: 'image fadingImage'
-    })
-  }
-
-  removeDescription = () => {
-    this.setState({
-      showingDescription: false,
-      imageClass: 'image'
-    })
+  toggleDescription = () => {
+    if (this.state.showingDescription) {
+      this.setState({
+        imageClass: 'image',
+        showingDescription: !this.state.showingDescription
+      })
+    } else {
+      this.setState({
+        imageClass: 'image fadingImage',
+        showingDescription: !this.state.showingDescription
+      })      
+    }
   }
 
   render() {
     return (
-      <div className="square" onMouseOver={this.showDescription} onMouseLeave={this.removeDescription}>
+      <div className="square" onClick={this.toggleDescription}>
         <div className="description">
           {this.state.showingDescription && <p>{this.props.item.description}</p>}
         </div>
