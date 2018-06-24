@@ -4,6 +4,26 @@ import GalleryList from '../GalleryList/GalleryList';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    
+  }
+  
+  
+  getGallery = () => {
+    axios.get('/gallery')
+        .then(response => {
+            console.log(`sucessfully got from the server: `, response.data);
+            this.setState({
+                galleryList: response.data
+            });
+        })
+        .catch(error => {
+            console.log(`error with the get /gallery server: `, error);
+        })
+  }
+  
+  
   render() {
     return (
       <div className="App">

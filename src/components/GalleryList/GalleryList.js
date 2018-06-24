@@ -11,19 +11,6 @@ class GalleryList extends Component {
         }
 
     }
-    
-    getGallery = () => {
-        axios.get('/gallery')
-            .then(response => {
-                console.log(`sucessfully got from the server: `, response.data);
-                this.setState({
-                    galleryList: response.data
-                });
-            })
-            .catch(error => {
-                console.log(`error with the get /gallery server: `, error);
-            })
-    }
 
     render() {
         this.getGallery();
