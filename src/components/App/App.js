@@ -14,7 +14,7 @@ class App extends Component {
   getGallery = () => {
     axios.get('/gallery')
         .then(response => {
-            // console.log(`sucessfully got from the server: `, response.data);
+            console.log(`sucessfully got from the server: `, response.data);
             this.setState({
                 galleryList: response.data
             });
@@ -22,6 +22,17 @@ class App extends Component {
         .catch(error => {
             console.log(`error with the get /gallery server: `, error);
         })
+  }
+
+  sendLike = (id) => {
+    axios.put(`/gallery/like/${id}`)
+      .then(response => {
+        console.log(`back from the server: `, response);
+        this.getGallery();
+      })
+      .catch(error => {
+        console.log(`error with the server: `, error);
+      })
   }
   
   
@@ -33,7 +44,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList galleryList={this.state.galleryList} />
+        <GalleryList sendLike={this.sendLike} galleryList={this.state.galleryList} />
       </div>
     );
   }

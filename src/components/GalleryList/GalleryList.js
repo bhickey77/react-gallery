@@ -18,10 +18,10 @@ const styles = theme => ({
 class GalleryList extends Component {
     render() {
         return (
-            <Grid container spacing={24}>
+            <Grid alignItems={'center'} container spacing={32}>
                 {this.props.galleryList.map(item => {
-                    return <Grid item xs={4} sm={3}> 
-                        <GalleryItem key={item.path} item={item} />
+                    return <Grid alignItems={'center'} item lg={2} md={3} sm={6} xs={12}> 
+                        <GalleryItem sendLike={this.props.sendLike} key={item.path} item={item} />
                     </Grid>
                 })}
             </Grid>

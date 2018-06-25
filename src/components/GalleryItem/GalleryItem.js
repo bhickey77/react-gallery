@@ -26,15 +26,20 @@ class GalleryItem extends Component {
     }
   }
 
+  handleLike = () => {
+    this.props.sendLike(this.props.item.id);
+  }
+
   render() {
     return (
       <div className="square" onClick={this.toggleDescription}>
         <GalleryImage item={this.props.item}/>
-        <div className="button">
-          <Button variant="contained" color="primary">
+        <span className="button">
+          <Button onClick={this.handleLike} variant="contained" color="primary">
             Love this!
           </Button>
-        </div>
+        </span>
+        <span>   Likes: {this.props.item.likes}</span>
       </div>
     );
   }
