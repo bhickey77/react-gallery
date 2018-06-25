@@ -26,12 +26,14 @@ class Image extends Component {
 
   render() {
     return (
-      <div className="square" onClick={this.toggleDescription}>
-        <div className="description">
-          {this.state.showingDescription && <p>{this.props.item.description}</p>}
-        </div>
-        <div className={this.state.imageClass}>
-          <img src={this.props.item.path} alt="" />
+      <div className="frame-square" onClick={this.toggleDescription}>
+        <div className="crop">
+          <div className="description">
+            {this.state.showingDescription && <p>{this.props.item.description}</p>}
+          </div>
+          <div className={this.state.imageClass}>
+            <img src={this.props.item.path} alt="" />
+          </div>
         </div>
       </div>
     );

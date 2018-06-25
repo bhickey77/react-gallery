@@ -30,9 +30,11 @@ class GalleryItem extends Component {
     return (
       <div className="square" onClick={this.toggleDescription}>
         <GalleryImage item={this.props.item}/>
-        <Button variant="contained" color="primary">
-          Love this!
-        </Button>
+        <div className="button">
+          <Button variant="contained" color="primary">
+            Love this!
+          </Button>
+        </div>
       </div>
     );
   }
